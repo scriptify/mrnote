@@ -1,0 +1,45 @@
+:root {
+  --padding: 20px;
+  --infoFontSize: 1em;
+}
+
+header {
+
+  text-align: center;
+  padding: var(--padding);
+  background-color: #2E9AFE;
+  color: #FFFFFF;
+
+  & div {
+    display: inline-block;
+  }
+
+  & .logo, & .name {
+    font-size: var(--infoFontSize);
+    position: absolute;
+    top: var(--padding);
+  }
+
+  & .name {
+    left: var(--padding);
+  }
+
+  & .title {
+    font-size: 2em;
+    margin-top: var(--infoFontSize);
+  }
+
+  & .logo {
+    right: var(--padding);
+  }
+
+  & .logo img {
+    height: 1.2em;
+    width: 1.2em;
+  }
+
+  & .delete-button {
+    margin-left: 10px;
+    cursor: pointer;
+  }
+}

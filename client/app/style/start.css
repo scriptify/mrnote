@@ -1,0 +1,67 @@
+:root {
+  --padding: 20px;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color: #848484;
+  font-style: italic;
+  font-size: 0.8em;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: #848484;
+  font-style: italic;
+  font-size: 0.8em;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: #848484;
+  font-style: italic;
+  font-size: 0.8em;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #848484;
+  font-style: italic;
+  font-size: 0.8em;
+}
+
+.start {
+  text-align: center;
+  padding-top: var(--padding);
+  padding-bottom: var(--padding);
+  height: 100%;
+
+  & input {
+    display: block;
+    margin: 0px auto;
+  }
+
+  & input.margin {
+    margin-top: var(--padding);
+  }
+
+  & .text-field, & input[type="submit"] {
+    background-color: #5BB0FF;
+    font-size: 1.4em;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    box-shadow: none;
+  }
+
+  & .text-field {
+    padding: 10px;
+    color: #045FB4;
+    margin-bottom: 3px;
+  }
+
+  & input[type="submit"] {
+    padding: var(--padding);
+    color: #FFF;
+  }
+
+  & input[type="submit"]:hover,
+  & input[type="submit"]:active,
+  & input[type="submit"]:focus {
+    box-shadow: 0px 3px 40px 0px #000;
+  }
+
+}

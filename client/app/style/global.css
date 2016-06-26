@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+}
+
+body {
+  font-family: 'Calibri', 'Roboto', sans-serif;
+  background-color: #045FB4;
+}
+
+.icon-button {
+  height: 22px;
+  width: 22px;
+  padding: 3px;
+  border-radius: 20px;
+}
+
+.icon-button img {
+  height: 100%;
+  width: 100%;
+}

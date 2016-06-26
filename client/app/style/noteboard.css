@@ -1,0 +1,12 @@
+.board {
+  & .button-bar {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+
+    & .new-button {
+      margin: 0 auto;
+    }
+
+  }
+}

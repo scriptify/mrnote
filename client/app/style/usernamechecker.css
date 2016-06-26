@@ -1,0 +1,10 @@
+.username-checker {
+  & * {
+    display: inline-block;
+  }
+
+  & .checker-icon {
+    margin-top: 10px;
+    background-color: #FFF;
+  }
+}

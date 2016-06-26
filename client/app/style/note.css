@@ -1,0 +1,29 @@
+
+.note {
+  padding: 5px;
+  border: solid 1px black;
+  max-width: 500px;
+  width: 50%;
+  padding: 10px;
+  color: #FFF;
+  overflow: hidden;
+  min-height: 100px;
+
+  & div[contentEditable="true"] {
+    box-shadow: 0px 0px 10px black;
+  }
+
+  & .button-bar {
+    width: 100%;
+    height: 25px;
+  }
+
+  & .action-button {
+    background-color: #2E9AFE;
+    cursor: pointer;
+    float: right;
+  }
+
+
+
+}

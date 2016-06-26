@@ -1,0 +1,63 @@
+
+.notification {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  background-color: #848484;
+  border-bottom-left-radius: 10px;
+  color: #FFF;
+  z-index: 100;
+
+  & .tutorial {
+    & .description {
+      margin-bottom: 10px;
+    }
+
+    & .url {
+      font-size: 13pt;
+      margin-bottom: 10px;
+      padding: 5px;
+      border: dashed 1px #FFF;
+    }
+  }
+
+}
+
+.notification.lock {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(4, 95, 180, 1);
+
+  & .close {
+    position: relative;
+    top: 0;
+    right: 0;
+    background-color: #FFF;
+    z-index: 1000;
+  }
+
+}
+
+.notification.lock > .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 1.4em;
+}
+
+.notification.hidden {
+  animation: fadeOut 0.5s;
+  visibility: hidden;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    visibility: visible;
+  } to {
+    opacity: 0;
+  }
+}
