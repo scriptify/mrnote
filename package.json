@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "start:dev": "webpack-dev-server",
-    "start:prod": "webpack && node server/index.js"
+    "start": "webpack && node server/index.js"
   },
   "keywords": [],
   "author": "",

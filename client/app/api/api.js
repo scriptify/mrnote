@@ -2,8 +2,7 @@ import fetch from '../util/fetch';
 import promise from '../util/Promise';
 import fetchJsonp from 'fetch-jsonp';
 import { SERVER_ERROR } from '../../../constants';
-import { API_URL, API_PORT, CORS } from '../../../config.js';
-const API_PATH = `${API_URL}:${API_PORT}/api/`;
+import { API_PATH, CORS } from '../../../config.js';
 
 function apiRequest(url) {
   return request(API_PATH + url, SERVER_ERROR, CORS);

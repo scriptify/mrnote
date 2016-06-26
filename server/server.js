@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const NoteAPI = require('./api/api');
-const { PUBLIC_PATH, API_PORT, CORS } = require('../config.js');
+const { PUBLIC_PATH, SERVER_PORT, SERVER_IP, CORS } = require('../config.js');
 
 const sendRes = (res, content) => {
   sendJSONRes(res, CORS, content);
@@ -105,10 +105,10 @@ module.exports = function(db) {
     res.sendFile(PUBLIC_PATH + '/index.html');
   });
 
-  app.listen(API_PORT, err => {
+  app.listen(SERVER_PORT, SERVER_IP, err => {
     if(err)
       return console.log('An error occured: ', err);
 
-    console.log(`Server listening on port ${API_PORT}`);
+    console.log(`Server listening on ${SERVER_IP}:${SERVER_PORT}`);
   });
 }
