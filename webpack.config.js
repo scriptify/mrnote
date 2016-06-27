@@ -79,7 +79,7 @@ switch(TARGET) {
     });
   }
   break;
-  case 'start:prod': {
+  case 'start': {
     // Make later when going into production step!
     module.exports = COMMON_CONFIGURATION;
   }
