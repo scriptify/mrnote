@@ -81,6 +81,14 @@ switch(TARGET) {
   break;
   case 'start': {
     // Make later when going into production step!
-    module.exports = COMMON_CONFIGURATION;
+    module.exports = merge(COMMON_CONFIGURATION, {
+      plugins: [
+        new webpack.DefinePlugin({
+          'process.env': {
+            'NODE_ENV': JSON.stringify('production')
+          }
+        })
+      ]
+    });
   }
 }
