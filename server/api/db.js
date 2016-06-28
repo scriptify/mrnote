@@ -1,13 +1,10 @@
-const credentials = require('credentials')();
-const createNote = require('./Note');
-const { NAME_TAKEN, NOT_FOUND, WRONG_PW, GREETING_NOTE_MSG, NO_ACCESS } = require('../../constants');
-
-class MongoAccess {
-
+const credentials = require('credentials')(); const createNote = 
+require('./Note'); const { NAME_TAKEN, NOT_FOUND, WRONG_PW, 
+GREETING_NOTE_MSG, NO_ACCESS } = require('../../constants'); class 
+MongoAccess {
   constructor(collection) {
     this.collection = collection;
   }
-
   edit(name, id, newContent) {
     return new Promise((resolve, reject) => {
       this.collection.updateOne(
@@ -16,19 +13,14 @@ class MongoAccess {
         (err, result) => {
           if(err)
             reject(err);
-
           this.insert(newContent, name)
             .then(resolve)
             .catch(reject);
-
         });
     });
   }
-
   create(name, password, isPublic) {
-
     return new Promise((resolve, reject) => {
-
       // Lookup if it already exists
       this.find(name)
         .then(doc => {
@@ -37,7 +29,6 @@ class MongoAccess {
         .catch(err => {
           if(err !== NOT_FOUND)
             reject(err);
-
           credentials.hash(password)
             .then(pwHash => {
               this.collection.insert({
@@ -53,19 +44,12 @@ class MongoAccess {
               });
             })
             .catch(reject);
-
         });
-
     });
-
   }
-
   insert(text, name) {
-
     return new Promise((resolve, reject) => {
-
       const note = createNote(text);
-
       this.collection.updateOne({
         name
       }, {
@@ -82,9 +66,7 @@ class MongoAccess {
         resolve(note.id);
       });
     });
-
   }
-
   list() {
     return new Promise((resolve, reject) => {
       this.collection.find({}, {name: 1}).toArray((err, docs) => {
@@ -95,34 +77,44 @@ class MongoAccess {
       });
     });
   }
-
   find(name, password = '') {
     return new Promise((resolve, reject) => {
       this.collection.findOne({name})
         .then(doc => {
           if(!doc)
             reject(NOT_FOUND);
-
           if(!JSON.parse(doc.isPublic)) {
             if(password === '' || !password)
               reject(NO_ACCESS);
-
-            this.auth(name, password, doc.pwHash)
-              .then(() => {
-                delete doc.pwHash;
-                delete doc._id;
-                resolve(doc);
-              })
+            this.authAndFind(name, password, doc)
+              .then(resolve)
+              .catch(reject);
+          } else if(password !== '') {
+            this.authAndFind(name, password, doc)
+              .then(resolve)
               .catch(reject);
           } else {
+            this.payloadOnly(doc);
             resolve(doc);
           }
-
         })
         .catch(reject);
     });
   }
-
+  payloadOnly(doc) {
+    delete doc["pwHash"];
+    delete doc["_id"];
+  }
+  authAndFind(name, password, doc) {
+    return new Promise((resolve, reject) => {
+      this.auth(name, password, doc.pwHash)
+        .then(() => {
+          this.payloadOnly(doc);
+          resolve(doc);
+        })
+        .catch(reject);
+    });
+  }
   deleteBoard(name) {
     return new Promise((resolve, reject) => {
       this.collection.deleteOne({name})
@@ -130,7 +122,6 @@ class MongoAccess {
         .catch(reject);
     });
   }
-
   deleteNote(boardName, noteId) {
     return new Promise((resolve, reject) => {
       this.collection.updateOne({name: boardName}, {
@@ -142,13 +133,9 @@ class MongoAccess {
         .catch(reject);
     });
   }
-
   auth(name, password, pwHash) {
-
     return new Promise((resolve, reject) => {
-
       const verify = (hash) => {
-
         credentials.verify(hash, password)
           .then(isValid => {
             if(!isValid) {
@@ -157,7 +144,6 @@ class MongoAccess {
             resolve();
           });
       }
-
       if(!pwHash) {
         this.collection.findOne({name})
           .then(doc => {
@@ -169,11 +155,7 @@ class MongoAccess {
       } else {
         verify(pwHash);
       }
-
     });
-
   }
-
 }
-
 module.exports = MongoAccess;
