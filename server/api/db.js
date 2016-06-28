@@ -1,6 +1,6 @@
-const credentials = require('credentials')(); const createNote = 
-require('./Note'); const { NAME_TAKEN, NOT_FOUND, WRONG_PW, 
-GREETING_NOTE_MSG, NO_ACCESS } = require('../../constants'); class 
+const credentials = require('credentials')(); const createNote =
+require('./Note'); const { NAME_TAKEN, NOT_FOUND, WRONG_PW,
+GREETING_NOTE_MSG, NO_ACCESS } = require('../../constants'); class
 MongoAccess {
   constructor(collection) {
     this.collection = collection;
@@ -56,7 +56,7 @@ MongoAccess {
         $push: {
           notes: {
             $each: [ note ],
-            $sort: { uploaded: 1 }
+            $sort: { uploaded: -1 }
           }
         }
       }, function(err, result) {

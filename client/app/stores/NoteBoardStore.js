@@ -68,7 +68,7 @@ class NoteBoardStore {
       .then(ret => {
         uiStore.unsetLoading();
         note.id = ret.id;
-        this.notes.push(note);
+        this.notes.unshift(note); // Add at array beginning
       })
       .catch(err => {
         uiStore.unsetLoading();
