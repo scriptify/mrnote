@@ -2,10 +2,10 @@ import fetch from '../util/fetch';
 import promise from '../util/Promise';
 import fetchJsonp from 'fetch-jsonp';
 import { SERVER_ERROR } from '../../../constants';
-import { API_PATH, CORS } from '../../../config.js';
+import { API_PATH, CORS, SERVER_PORT, SERVER_IP } from '../../../config.js';
 
 function apiRequest(url) {
-  return request(API_PATH + url, SERVER_ERROR, CORS);
+  return request(`http://${SERVER_IP}:${SERVER_PORT}${API_PATH}${url}`, SERVER_ERROR, CORS);
 }
 
 function request(url, error, jsonp) {
@@ -36,6 +36,7 @@ export function create(name, password, isPublic) {
 }
 
 export function insert(text, name, password) {
+  text = encodeURIComponent(text);
   const url = `insert/${text}/${name}/${password}`;
   return apiRequest(url);
 }
@@ -50,6 +51,7 @@ export function find(name, password = '') {
 }
 
 export function edit(name, id, password, newContent) {
+  newContent = encodeURIComponent(newContent);
   const url = `edit/${name}/${id}/${password}/${newContent}`;
   return apiRequest(url);
 }

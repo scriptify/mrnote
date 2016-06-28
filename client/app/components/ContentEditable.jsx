@@ -9,7 +9,7 @@ export default class ContentEditable extends Component {
   }
 
   componentDidMount() {
-    this.elem.innerHTML = this.props.content;
+    this.elem.textContent = this.props.content;
   }
 
   render() {
@@ -24,7 +24,7 @@ export default class ContentEditable extends Component {
   }
 
   onChange(e) {
-    this.props.onChange(this.elem.innerHTML);
+    this.props.onChange(this.elem.textContent);
   }
 
 }

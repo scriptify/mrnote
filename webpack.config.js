@@ -4,7 +4,6 @@ webpack = require('webpack'), // Da bundling modules!
 NpmInstallPlugin = require('npm-install-webpack-plugin'), // Install client dependencies automatically!
 merge = require('webpack-merge'), // Merge together configurations!
 cssnext = require('postcss-cssnext'),
-CompressionPlugin = require("compression-webpack-plugin"),
 CONFIG = require('./config');
 
 const PATHS = {
@@ -92,14 +91,7 @@ switch(TARGET) {
         new webpack.optimize.UglifyJsPlugin({
           compress: { warnings: false }
         }),
-        new webpack.optimize.DedupePlugin(),
-        new CompressionPlugin({
-          asset: "[path].gz[query]",
-          algorithm: "gzip",
-          test: /\.js$|\.css$|\.html$/,
-          threshold: 10240,
-          minRatio: 0.8
-        })
+        new webpack.optimize.DedupePlugin()
       ]
     });
   }
