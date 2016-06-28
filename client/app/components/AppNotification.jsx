@@ -39,7 +39,6 @@ export default class AppNotification extends Component {
           content:
             <div>
               <p>The key you entered is wrong.</p>
-              <Image src={ retry } />
             </div>,
           lock: true,
           fixed: true

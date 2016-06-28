@@ -65,8 +65,9 @@ export default class Start extends Component {
     this.setState({
       ...this.state,
       username: val
+    }, () => {
+      this.checkAvailability(this.state.username);
     });
-    this.checkAvailability(e.target.value);
   }
 
   handlePasswordChange(e) {
