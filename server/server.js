@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const compression = require('compression');
 const NoteAPI = require('./api/api');
 const { PUBLIC_PATH, SERVER_PORT, SERVER_IP, CORS } = require('../config.js');
 
@@ -21,6 +22,9 @@ module.exports = function(db) {
   const api = new NoteAPI(collection);
 
   const app = express();
+
+  app.use(compression());
+
   app.use(express.static(PUBLIC_PATH));
 
   app.get('/api/edit/:name/:id/:password/:newContent', (req, res) => {
