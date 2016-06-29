@@ -2,10 +2,13 @@ import fetch from '../util/fetch';
 import promise from '../util/Promise';
 import fetchJsonp from 'fetch-jsonp';
 import { SERVER_ERROR } from '../../../constants';
-import { API_PATH, CORS, SERVER_PORT, SERVER_IP } from '../../../config.js';
+import { API_PATH, CORS, SERVER_PORT, SERVER_IP, IS_API_SERVER_EXTERNAL } from '../../../config.js';
 
 function apiRequest(url) {
-  return request(`http://${SERVER_IP}:${SERVER_PORT}${API_PATH}${url}`, SERVER_ERROR, CORS);
+  var reqUrl = API_PATH + url;
+  if(IS_API_SERVER_EXTERNAL)
+    reqUrl = `http://${SERVER_IP}:${SERVER_PORT}${reqUrl}`;
+  return request(reqUrl, SERVER_ERROR, CORS);
 }
 
 function request(url, error, jsonp) {
