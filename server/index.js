@@ -1,4 +1,4 @@
-const { DB_URL } = require('../config.js');
+const { DB_URL } = require('../config/config.js');
 const { connect } = require('./util/mongo.js');
 const server = require('./server');
 

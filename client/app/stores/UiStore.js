@@ -5,7 +5,7 @@ import Notification from '../models/Notification';
 
 import { isUsernameAvailable, create } from '../api/api';
 
-import { TUTORIAL } from '../../../constants';
+import { TUTORIAL } from '../../../config/constants';
 
 import notesStore from './NoteBoardStore';
 

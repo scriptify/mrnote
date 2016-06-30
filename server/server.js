@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const compression = require('compression');
 const NoteAPI = require('./api/api');
-const { PUBLIC_PATH, SERVER_PORT, SERVER_IP, CORS } = require('../config.js');
+const { PUBLIC_PATH, SERVER_PORT, SERVER_IP, CORS } = require('../config/config.js');
 
 const sendRes = (res, content) => {
   sendJSONRes(res, CORS, content);

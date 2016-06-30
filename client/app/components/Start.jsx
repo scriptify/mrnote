@@ -4,7 +4,7 @@ import Header from './Header';
 import UsernameChecker from './UsernameChecker';
 import uiStore from '../stores/UiStore';
 
-import { FORM_FIELDS_MISSING, NAME_TAKEN } from '../../../constants';
+import { FORM_FIELDS_MISSING, NAME_TAKEN } from '../../../config/constants';
 
 export default class Start extends Component {
 

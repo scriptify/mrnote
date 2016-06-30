@@ -1,8 +1,8 @@
 import fetch from '../util/fetch';
 import promise from '../util/Promise';
 import fetchJsonp from 'fetch-jsonp';
-import { SERVER_ERROR } from '../../../constants';
-import { API_PATH, CORS, SERVER_PORT, SERVER_IP, IS_API_SERVER_EXTERNAL } from '../../../config.js';
+import { SERVER_ERROR } from '../../../config/constants';
+import { API_PATH, CORS, SERVER_PORT, SERVER_IP, IS_API_SERVER_EXTERNAL } from '../../../config/config.js';
 
 function apiRequest(url) {
   var reqUrl = API_PATH + url;

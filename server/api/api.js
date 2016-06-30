@@ -1,5 +1,5 @@
 const MongoAccess = require('./db');
-const { INVALID_CREDENTIALS } = require('../../constants');
+const { INVALID_CREDENTIALS } = require('../../config/constants');
 
 class NotesAPI {
 

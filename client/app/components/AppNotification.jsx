@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import { browserHistory } from 'react-router';
-import { NAME_TAKEN, NOT_FOUND, WRONG_PW, NO_ACCESS, SERVER_ERROR, INVALID_CREDENTIALS, FORM_FIELDS_MISSING, PASSWORD_REQUIRED, TUTORIAL, APP_URL } from '../../../constants';
+import { NAME_TAKEN, NOT_FOUND, WRONG_PW, NO_ACCESS, SERVER_ERROR, INVALID_CREDENTIALS, FORM_FIELDS_MISSING, PASSWORD_REQUIRED, TUTORIAL, APP_URL } from '../../../config/constants';
 import Notification from './Notification';
 import Image from './Image';
 import Auth from './Auth';

@@ -1,6 +1,6 @@
 const credentials = require('credentials')(); const createNote =
 require('./Note'); const { NAME_TAKEN, NOT_FOUND, WRONG_PW,
-GREETING_NOTE_MSG, NO_ACCESS } = require('../../constants'); class
+GREETING_NOTE_MSG, NO_ACCESS } = require('../../config/constants'); class
 MongoAccess {
   constructor(collection) {
     this.collection = collection;

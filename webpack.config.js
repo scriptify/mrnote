@@ -4,12 +4,13 @@ webpack = require('webpack'), // Da bundling modules!
 NpmInstallPlugin = require('npm-install-webpack-plugin'), // Install client dependencies automatically!
 merge = require('webpack-merge'), // Merge together configurations!
 cssnext = require('postcss-cssnext'),
-CONFIG = require('./config');
+CONFIG = require('./config/config');
 
 const PATHS = {
   app: CONFIG.APP_PATH,
   build: CONFIG.PUBLIC_PATH,
-  img: CONFIG.IMG_PATH
+  img: CONFIG.IMG_PATH,
+  config: CONFIG.CONFIG_PATH
 };
 
 const TARGET = process.env.npm_lifecycle_event;
@@ -59,7 +60,7 @@ const COMMON_CONFIGURATION = {
 switch(TARGET) {
   // Which procedure was started?
   default:
-  case 'start:dev': {
+  case 'dev': {
     module.exports = merge(COMMON_CONFIGURATION, {
       devServer: {
         contentBase: PATHS.build,
