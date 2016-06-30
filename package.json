@@ -4,7 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start:dev": "webpack-dev-server",
+    "dev": "webpack-dev-server & node server/index.js &",
     "start": "pm2 stop index && webpack && pm2 start server/index.js"
   },
   "keywords": [],
