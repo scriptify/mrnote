@@ -20,11 +20,13 @@ pm2.connect(err => {
     if(pList.length > 0) {
 
       if(pList[0].pm2_env.status === 'online') {
-        pm2.stop(pList[0], err => {
+
+        pm2.stop('api-server', err => {
           onError(err);
           pm2.disconnect();
         });
       } else {
+
         pm2.start(pList[0], err => {
           onError(err);
           pm2.disconnect();
