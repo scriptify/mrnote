@@ -30,7 +30,7 @@ export default class Header extends Component {
     return (
       <header>
         <div className="name">
-          Notes
+          mrnote
         </div>
         { title }
         <div className="logo">

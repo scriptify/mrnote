@@ -57,7 +57,7 @@ const COMMON_CONFIGURATION = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      ENVIRONMENT: JSON.stringify(process.env.NODE_ENV || 'development')
+      ENVIRONMENT: JSON.stringify(TARGET === 'dev' ? 'development' : 'production')
     })
   ]
 };

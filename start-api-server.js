@@ -1,5 +1,6 @@
 const pm2 = require('pm2');
 
+const scriptName = 'api-server';
 const onError = err => {
   if (err) {
     console.error(err);
@@ -15,19 +16,22 @@ pm2.connect(err => {
   pm2.list((err, list) => {
 
     onError(err);
-    const pList = list.filter(p => p.name === 'api-server');
+    const pList = list.filter(p => p.name === scriptName);
 
     if(pList.length > 0) {
 
       if(pList[0].pm2_env.status === 'online') {
 
-        pm2.stop('api-server', err => {
+        pm2.stop(scriptName, err => {
           onError(err);
-          pm2.disconnect();
+          pm2.start(scriptName, err => {
+            onError(err);
+            pm2.disconnect();
+          });
         });
       } else {
 
-        pm2.start(pList[0], err => {
+        pm2.start(scriptName, err => {
           onError(err);
           pm2.disconnect();
         });

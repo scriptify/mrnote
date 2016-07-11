@@ -2,12 +2,12 @@ import fetch from '../util/fetch';
 import fetchPost from '../util/fetchPost';
 import promise from '../util/Promise';
 import { SERVER_ERROR } from '../../../config/constants';
-import { API_PATH, CORS, SERVER_PORT, SERVER_IP, IS_API_SERVER_EXTERNAL } from '../../../config/config.js';
+import { API_PATH, CORS, SERVER_PORT, SERVER_IP } from '../../../config/config.js';
 
 function apiRequest(url, type = 'GET', postBody = {}) {
   var reqUrl = API_PATH + url;
 
-  if(IS_API_SERVER_EXTERNAL)
+  if(CORS) // API Server is external
     reqUrl = `http://${SERVER_IP}:${SERVER_PORT}${reqUrl}`;
 
     console.log(reqUrl)
@@ -56,22 +56,16 @@ function request(url, type, postBody, error, jsonp) {
 
 }
 
-export function testPost(msg) {
-  const url = 'test';
-  return apiRequest(url, 'POST', msg);
-}
-
-window.testPost = testPost;
-
 export function create(name, password, isPublic) {
   const url = `create/${name}/${password}/${isPublic}`;
   return apiRequest(url);
 }
 
 export function insert(text, name, password) {
-  text = encodeURIComponent(text);
-  const url = `insert/${text}/${name}/${password}`;
-  return apiRequest(url);
+  const url = `insert/${name}/${password}`;
+  return apiRequest(url, 'POST', {
+    text
+  });
 }
 
 export function list() {
@@ -84,9 +78,10 @@ export function find(name, password = '') {
 }
 
 export function edit(name, id, password, newContent) {
-  newContent = encodeURIComponent(newContent);
-  const url = `edit/${name}/${id}/${password}/${newContent}`;
-  return apiRequest(url);
+  const url = `edit/${name}/${id}/${password}`;
+  return apiRequest(url, 'POST', {
+    newContent
+  });
 }
 
 export function deleteBoard(name, password) {

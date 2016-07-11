@@ -29,12 +29,9 @@ module.exports = function(db) {
 
   app.use(express.static(PUBLIC_PATH));
 
-  app.post('/api/test', (req, res) => {
-    console.log('GOT it: /test ', req.body);
-  });
-
-  app.get('/api/edit/:name/:id/:password/:newContent', (req, res) => {
-    const { name, id, password, newContent } = req.params;
+  app.post('/api/edit/:name/:id/:password/', (req, res) => {
+    const { name, id, password } = req.params;
+    const { newContent } = req.body;
 
     api.edit(name, id, password, newContent)
       .then(() => {
@@ -57,8 +54,10 @@ module.exports = function(db) {
       });
   });
 
-  app.get('/api/insert/:text/:name/:password', (req, res) => {
-    const { text, name, password } = req.params;
+  app.post('/api/insert/:name/:password', (req, res) => {
+    const { name, password } = req.params;
+    const { text } = req.body;
+
     api.insert(text, name, password)
       .then(id => {
         sendRes(res, {msg: 'SUCCESS', id});
