@@ -6,4 +6,14 @@ let fetch = require('fetch-ponyfill')({
 
 fetch = window.fetch || self.fetch || fetch;
 
-export default fetch;
+export default function(url, options = {}) {
+
+    if(options.jsonp) {
+      return fetch(url, {
+        ...options,
+        mode: options.jsonp ? 'no-cors' : 'cors'
+      });
+    }
+
+    return fetch(url, options);
+};

@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const compression = require('compression');
+const bodyParser = require('body-parser');
 const NoteAPI = require('./api/api');
 const { PUBLIC_PATH, SERVER_PORT, SERVER_IP, CORS } = require('../config/config.js');
 
@@ -23,9 +24,14 @@ module.exports = function(db) {
 
   const app = express();
 
+  app.use(bodyParser.json());
   app.use(compression());
 
   app.use(express.static(PUBLIC_PATH));
+
+  app.post('/api/test', (req, res) => {
+    console.log('GOT it: /test ', req.body);
+  });
 
   app.get('/api/edit/:name/:id/:password/:newContent', (req, res) => {
     const { name, id, password, newContent } = req.params;

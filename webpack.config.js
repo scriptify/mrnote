@@ -54,7 +54,12 @@ const COMMON_CONFIGURATION = {
   },
   postcss: function() {
     return [ cssnext ];
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      ENVIRONMENT: JSON.stringify(process.env.NODE_ENV || 'development')
+    })
+  ]
 };
 
 switch(TARGET) {

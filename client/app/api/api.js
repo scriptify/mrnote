@@ -1,37 +1,67 @@
 import fetch from '../util/fetch';
+import fetchPost from '../util/fetchPost';
 import promise from '../util/Promise';
-import fetchJsonp from 'fetch-jsonp';
 import { SERVER_ERROR } from '../../../config/constants';
 import { API_PATH, CORS, SERVER_PORT, SERVER_IP, IS_API_SERVER_EXTERNAL } from '../../../config/config.js';
 
-function apiRequest(url) {
+function apiRequest(url, type = 'GET', postBody = {}) {
   var reqUrl = API_PATH + url;
+
   if(IS_API_SERVER_EXTERNAL)
     reqUrl = `http://${SERVER_IP}:${SERVER_PORT}${reqUrl}`;
-  return request(reqUrl, SERVER_ERROR, CORS);
+
+    console.log(reqUrl)
+  return request(reqUrl, type, postBody, SERVER_ERROR, CORS);
 }
 
-function request(url, error, jsonp) {
+function request(url, type, postBody, error, jsonp) {
 
-  const fetchFn = jsonp ? fetchJsonp : fetch;
+  if(type === 'POST') {
 
-  return new promise((resolve, reject) => {
-    fetchFn(url)
-      .then(res => {
-        return res.json();
-      })
-      .then(json => {
-        if(json.err)
-          reject(json.err);
-        resolve(json);
-      })
-      .catch(err => {
-        console.log(err);
-        reject(error);
-      });
-  });
+    return new promise((resolve, reject) => {
+      fetchPost(url, postBody, jsonp)
+        .then(res => {
+          return res.json();
+        })
+        .then(json => {
+          if(json.err)
+            reject(json.err);
+          resolve(json);
+        })
+        .catch(err => {
+          reject(error);
+        });
+    });
+
+  } else if(type === 'GET') {
+
+    return new promise((resolve, reject) => {
+      fetch(url, {jsonp})
+        .then(res => {
+          return res.json();
+        })
+        .then(json => {
+          if(json.err)
+            reject(json.err);
+          resolve(json);
+        })
+        .catch(err => {
+          reject(error);
+        });
+    });
+
+  } else {
+    throw new Error('Invalid request type!');
+  }
 
 }
+
+export function testPost(msg) {
+  const url = 'test';
+  return apiRequest(url, 'POST', msg);
+}
+
+window.testPost = testPost;
 
 export function create(name, password, isPublic) {
   const url = `create/${name}/${password}/${isPublic}`;
