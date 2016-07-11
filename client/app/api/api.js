@@ -10,7 +10,6 @@ function apiRequest(url, type = 'GET', postBody = {}) {
   if(CORS) // API Server is external
     reqUrl = `http://${SERVER_IP}:${SERVER_PORT}${reqUrl}`;
 
-    console.log(reqUrl)
   return request(reqUrl, type, postBody, SERVER_ERROR, CORS);
 }
 
