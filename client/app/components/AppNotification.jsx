@@ -29,7 +29,7 @@ export default class AppNotification extends Component {
 
       case NOT_FOUND:
         return {
-          content: <div><p>Could not find the board you are searching!</p><Image src={ notFound } /></div>,
+          content: <div><p>Sorry, I couldn't find the board you are looking for!</p><Image src={ notFound } /></div>,
           lock: true,
           fixed: true
         };
@@ -38,7 +38,7 @@ export default class AppNotification extends Component {
         return {
           content:
             <div>
-              <p>The key you entered is wrong.</p>
+              <p>This is a wrong key, argghh. Is this board really yours?</p>
             </div>,
           lock: true,
           fixed: true
@@ -56,14 +56,14 @@ export default class AppNotification extends Component {
 
       case SERVER_ERROR:
         return {
-          content: 'A server error occured. Please try again later.',
+          content: 'I think a screw is missing on my motherboard. Please try again later, I\'ll fix it as soon as possible!',
           lock: true,
           fixed: true
         };
 
       case INVALID_CREDENTIALS:
         return {
-          content: 'The credentials you specified are invalid!',
+          content: 'There is something wrong with your board name/key.',
           lock: true,
           fixed: false
         };
@@ -112,7 +112,7 @@ export default class AppNotification extends Component {
 
       default:
         return {
-          content: 'An unknown error occured :(',
+          content: 'I found an unknown error, I hope this doesn\'t happen again :(',
           lock: true,
           fixed: true
         };

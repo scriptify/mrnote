@@ -45,7 +45,7 @@ function request(url, type, postBody, error, jsonp) {
           resolve(json);
         })
         .catch(err => {
-          console.log(err);
+          console.error(err);
           reject(error);
         });
     });

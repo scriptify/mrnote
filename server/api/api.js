@@ -8,11 +8,10 @@ class NotesAPI {
   }
 
   mrnoteValidate(input) {
-    return
-      input
-        .substring(0, MAX_CHARS)
-        .replace(/[^0-9a-z]/gi, '-')
-        .toLowerCase();
+    return input
+            .substring(0, MAX_CHARS)
+            .replace(/[^0-9a-z]/gi, '-')
+            .toLowerCase();
   }
 
   edit(name, id, password, newContent) {
@@ -32,7 +31,7 @@ class NotesAPI {
     return new Promise((resolve, reject) => {
 
       name = this.mrnoteValidate(name);
-      password = this.mrnoteValidate(name);
+      password = this.mrnoteValidate(password);
 
       if(name === '' || password === '')
         reject(INVALID_CREDENTIALS)

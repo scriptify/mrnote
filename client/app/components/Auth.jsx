@@ -11,7 +11,7 @@ export default class Auth extends Component {
   render() {
     return (
       <div className="start">
-        <p>The board key is required :)</p>
+        <p>Enter the board key, so I can let you enter :)</p>
         <input placeholder="Board key..." type="text" className="text-field margin" onChange={e => {
           this.setState({
             ...this.state,
