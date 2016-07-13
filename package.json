@@ -40,8 +40,6 @@
     "credentials": "^2.0.0",
     "es6-promise": "^3.2.1",
     "express": "*",
-    "fetch-jsonp": "^1.0.0",
-    "fetch-ponyfill": "^1.0.0",
     "file-loader": "^0.8.5",
     "itsa-react-checkbox": "^15.2.13",
     "mobx": "^2.3.1",

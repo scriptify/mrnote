@@ -1,9 +1,6 @@
-import fetch from './fetch';
-
-export default function fetchPost(url, json, jsonp = false) {
+export default function fetchPost(url, json, cors) {
 
   return fetch(url, {
-      jsonp,
       method: 'POST',
       headers: {
         'Accept': 'application/json',

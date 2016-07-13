@@ -2,18 +2,12 @@ const express = require('express');
 const path = require('path');
 const compression = require('compression');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const NoteAPI = require('./api/api');
-const { PUBLIC_PATH, SERVER_PORT, SERVER_IP, CORS } = require('../config/config.js');
+const { PUBLIC_PATH, SERVER_PORT, SERVER_IP } = require('../config/config.js');
 
 const sendRes = (res, content) => {
-  sendJSONRes(res, CORS, content);
-}
-
-function sendJSONRes(res, jsonp, content) {
-  if(jsonp)
-    res.jsonp(content);
-  else
-    res.json(content);
+  res.json(content);
 }
 
 module.exports = function(db) {
@@ -26,6 +20,7 @@ module.exports = function(db) {
 
   app.use(bodyParser.json());
   app.use(compression());
+  app.use(cors());
 
   app.use(express.static(PUBLIC_PATH));
 

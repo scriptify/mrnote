@@ -61,7 +61,6 @@ class NoteBoardStore {
   }
 
   newNote() {
-
     uiStore.setLoading();
     const note = new Note('New note...');
     insert(note.text, this.name, this.password)

@@ -2,6 +2,8 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, Link, browserHistory, IndexRoute } from 'react-router';
 
+import 'whatwg-fetch'; // Fetch polyfill
+
 import App from './components/App';
 import Start from './components/Start';
 import NoteBoard from './components/NoteBoard';
