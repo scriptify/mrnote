@@ -4,7 +4,7 @@ import Header from './Header';
 import UsernameChecker from './UsernameChecker';
 import uiStore from '../stores/UiStore';
 
-import { FORM_FIELDS_MISSING, NAME_TAKEN } from '../../../config/constants';
+import { FORM_FIELDS_MISSING, NAME_TAKEN, MAX_CHARS } from '../../../config/constants';
 
 export default class Start extends Component {
 
@@ -76,7 +76,7 @@ export default class Start extends Component {
       e.target.value
         .replace(/[^0-9a-z]/gi, '-')
         .toLowerCase();
-    
+
     this.setState({
       ...this.state,
       password: val
@@ -98,12 +98,12 @@ export default class Start extends Component {
         <div className="start">
           <form>
 
-            <UsernameChecker value={ this.state.username } placeholder="Name of your new board..." className="text-field"
+            <UsernameChecker maxLength={ MAX_CHARS } value={ this.state.username } placeholder="Name of your new board..." className="text-field"
               available={ (this.state.username.length > 0) ? this.state.usernameAvailable : undefined }
               onChange={ this.handleUserNameChange.bind(this) }
             />
 
-            <input value={ this.state.password } placeholder="Your key..." type="text" className="text-field margin"
+            <input maxLength={ MAX_CHARS } value={ this.state.password } placeholder="Your key..." type="text" className="text-field margin"
               onChange={ this.handlePasswordChange.bind(this) }
             ></input>
 

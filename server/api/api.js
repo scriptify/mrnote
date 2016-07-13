@@ -1,5 +1,5 @@
 const MongoAccess = require('./db');
-const { INVALID_CREDENTIALS } = require('../../config/constants');
+const { INVALID_CREDENTIALS, MAX_CHARS } = require('../../config/constants');
 
 class NotesAPI {
 
@@ -10,6 +10,7 @@ class NotesAPI {
   mrnoteValidate(input) {
     return
       input
+        .substring(0, MAX_CHARS)
         .replace(/[^0-9a-z]/gi, '-')
         .toLowerCase();
   }

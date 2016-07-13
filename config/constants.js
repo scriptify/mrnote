@@ -8,5 +8,6 @@ module.exports = {
   INVALID_CREDENTIALS: 'INVALID_CREDENTIALS',
   FORM_FIELDS_MISSING: 'FORM_FIELDS_MISSING',
   PASSWORD_REQUIRED: 'PASSWORD_REQUIRED',
-  APP_URL: 'mrnote.xyz'
+  APP_URL: 'mrnote.xyz',
+  MAX_CHARS: 20 // For both board name and key
 };
