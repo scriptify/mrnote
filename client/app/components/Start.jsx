@@ -71,9 +71,15 @@ export default class Start extends Component {
   }
 
   handlePasswordChange(e) {
+
+    const val =
+      e.target.value
+        .replace(/[^0-9a-z]/gi, '-')
+        .toLowerCase();
+    
     this.setState({
       ...this.state,
-      password: e.target.value
+      password: val
     });
   }
 

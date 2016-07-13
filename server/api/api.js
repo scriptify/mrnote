@@ -7,6 +7,13 @@ class NotesAPI {
     this.db = new MongoAccess(collection);
   }
 
+  mrnoteValidate(input) {
+    return
+      input
+        .replace(/[^0-9a-z]/gi, '-')
+        .toLowerCase();
+  }
+
   edit(name, id, password, newContent) {
     return new Promise((resolve, reject) => {
       this.db.auth(name, password)
@@ -23,10 +30,8 @@ class NotesAPI {
 
     return new Promise((resolve, reject) => {
 
-      name =
-        name
-          .replace(/[^0-9a-z]/gi, '-')
-          .toLowerCase();
+      name = this.mrnoteValidate(name);
+      password = this.mrnoteValidate(name);
 
       if(name === '' || password === '')
         reject(INVALID_CREDENTIALS)
