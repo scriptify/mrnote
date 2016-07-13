@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Checkbox from './Checkbox';
 import Header from './Header';
+import Image from './Image';
+
+import gitlogo from '../img/git-logo.png';
+
 import UsernameChecker from './UsernameChecker';
 import uiStore from '../stores/UiStore';
 
@@ -111,6 +115,10 @@ export default class Start extends Component {
             <input type="submit" value="Create!" className="margin" onClick={ this.handleCreate.bind(this) }></input>
 
           </form>
+
+          <a href="http://github.com/scriptify/mrnote" target="_blank">
+            <Image src={ gitlogo } className="git-logo" />
+          </a>
         </div>
       </div>
     );

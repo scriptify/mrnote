@@ -64,4 +64,20 @@
     box-shadow: inset 0px 1px 10px 0px #000;
   }
 
+  & .git-logo {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    height: 100px;
+    width: 100px;
+    box-shadow: 0px 0px 20px #000;
+    border-radius: 100px;
+  }
+
+  & .git-logo:hover,
+  & .git-logo:active,
+  & .git-logo:focus {
+    box-shadow: 0px 0px 50px #000;
+  }
+
 }
