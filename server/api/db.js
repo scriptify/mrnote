@@ -134,8 +134,14 @@ MongoAccess {
     });
   }
   auth(name, password, pwHash) {
+
     return new Promise((resolve, reject) => {
+
       const verify = (hash) => {
+        if(password === '') {
+          reject(NO_ACCESS);
+          return;
+        }
         credentials.verify(hash, password)
           .then(isValid => {
             if(!isValid) {
