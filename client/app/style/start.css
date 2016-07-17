@@ -28,6 +28,10 @@
   padding-top: var(--padding);
   padding-bottom: var(--padding);
   height: 100%;
+  min-height: 500px;
+  background: url(../img/icon.png) center center;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
 
   & input {
     display: block;

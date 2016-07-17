@@ -102,6 +102,7 @@ export default class AppNotification extends Component {
                 { `${APP_URL}/${store.name}/` }
               </div>
               <Image src={ confirm } onClick={() => {
+                console.log(`going to /${store.name}/${store.password}/`)
                 browserHistory.push(`/${store.name}/${store.password}/`);
                 window.location.reload();
               }}/>
