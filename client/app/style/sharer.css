@@ -1,0 +1,28 @@
+.sharer {
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+  padding: 2px;
+
+  & .icon * {
+    border-radius: 100%;
+    margin-bottom: 2px;
+  }
+
+  & .share-icon {
+    height: 50px;
+  }
+
+}
+
+@media screen and (orientation:landscape) {
+  .sharer {
+    & .icon {
+      display: inline-block;
+      height: 0;
+      margin-bottom: 0;
+      margin-right: 2px;
+    }
+  }
+
+}

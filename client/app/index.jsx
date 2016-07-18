@@ -17,6 +17,8 @@ import './style/noteboard.css';
 import './style/usernamechecker.css';
 import './style/checkbox.css';
 import './style/notification.css';
+import './style/sharer.css';
+
 
 import * as api from './api/api';
 

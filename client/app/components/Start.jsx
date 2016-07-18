@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Sharer from './Sharer';
 import Checkbox from './Checkbox';
 import Header from './Header';
 import Image from './Image';
@@ -119,6 +120,7 @@ export default class Start extends Component {
           <a href="http://github.com/scriptify/mrnote" target="_blank">
             <Image src={ gitlogo } className="git-logo" />
           </a>
+          <Sharer />
         </div>
       </div>
     );

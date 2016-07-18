@@ -36,6 +36,9 @@
   },
   "dependencies": {
     "babel-preset-react": "^6.5.0",
+    "body-parser": "*",
+    "compression": "*",
+    "cors": "*",
     "credentials": "^2.0.0",
     "es6-promise": "^3.2.1",
     "express": "*",
@@ -47,11 +50,9 @@
     "react-dom": "^15.1.0",
     "react-masonry-component": "^4.0.4",
     "react-router": "^2.4.1",
-    "whatwg-fetch": "*",
+    "react-share": "^1.8.4",
     "uuid": "*",
-    "compression": "*",
-    "body-parser": "*",
-    "cors": "*"
+    "whatwg-fetch": "*"
   },
   "repository": {
     "type": "git",

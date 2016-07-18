@@ -8,7 +8,7 @@ import Auth from './Auth';
 import uiStore from '../stores/UiStore';
 import store from '../stores/NoteBoardStore';
 import notFound from '../img/notfound.png';
-import confirm from '../img/confirm.png';
+import continueToBoard from '../img/continue.png';
 
 @observer
 export default class AppNotification extends Component {
@@ -101,7 +101,8 @@ export default class AppNotification extends Component {
               <div contentEditable="true" className="url">
                 { `${APP_URL}/${store.name}/` }
               </div>
-              <Image src={ confirm } onClick={() => {
+              <p>Go to your board!</p>
+              <Image src={ continueToBoard } onClick={() => {
                 browserHistory.push(`/${store.name}/${store.password}/`);
                 window.location.reload();
               }}/>
