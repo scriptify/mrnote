@@ -1,8 +1,8 @@
 # mrnote
 Ever wanted your notes to be accesible from everywhere and be able to share them? Say hello to mrnote.
 ## In action
-Want to see mrnote live?
-Visit [mrnote.xyz](http://mrnote.xyz)
+Currently down.
+Just clone the repo and try it!
 ## Usage
 It's simple.
 On the start site, you can create a new noteboard.
